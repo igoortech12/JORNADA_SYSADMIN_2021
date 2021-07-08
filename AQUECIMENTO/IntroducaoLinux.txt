@@ -1,0 +1,52 @@
+BASE DE ESTUDO: Sistema de arquivos
+
+DIAGRAMA DAS PASTAS (DIRETÓRIOS) - CentOS:
+        |   /boot   - ARQUIVOS DE INICIALIZAÇÃO
+        |   /etc    - ARQUIVOS DE CONFIGURAÇÃO
+        |   /proc   - INFORMAÇÕES SOBRE O HARDWARE
+        |   /dev    - INFORMAÇÕES DO DISPOSITIVO DE ARMAZENAMENTO
+        |   /home   - ARQUIVOS DO USUÁRIO
+/       |   /root   - ARQUIVOS DO ROOT
+        |   /var    - ARQUIVOS DE LOG
+        |   /usr  | - /bin  |   BINÁRIOS DO LINUX, ARQUIVOS EXECUTÁVEIS -
+        |   /usr  | - /sbin |   BINÁRIOS DO LINUX, ARQUIVOS EXECUTÁVEIS - AQUI SÃO PROGRAMAS EXECUTAVEIS SOMENTE COM O ROOT
+        |   /run    - INFORMAÇÕES DE INICIALIZAÇÃO
+        |   /tmp    - ARQUIVOS TEMPORÁRIO
+        |   /mnt    - PONTO DE MONTAGEM. EX. PENDRIVE
+        |   /opt    - ARQUIVOS DE CONFIGURAÇÃO DE ALGUNS PROGRAMAS DE USO EXCLUSIVO
+
+PRINCIPAIS DIRETÓRIOS:
+- /etc, /var e /opt
+
+COMANDOS:
+cd - acessar diretório (pasta)
+    cd.. - volta ao diretório anterior
+    cd- - volta ao diretório inicial (pode ser o anterior ou não) e, se usado novamente, volta ao diretório que estava.
+ls - lista conteúdo de um diretório
+    ls -l - mostra o conteúdo em modo detalhado s/ tamanho listado
+    ls -h - mostra o conteúdo em modo detalhado c/ tamanho listado
+    ls -a - mostrar tudo com arquivos ocultos
+clear - limpa a tela
+mkdir - criação um diretório (pasta)
+rm - apagar arquivos
+    rm -r - apagar diretório
+    rm -f - força a exclusão
+touch - altera data de criação de uma arquivo
+man - mostra o manual de algum comando
+file - mostra o tipo do arquivo
+mv - move e renomea
+cp - copiar arquivo
+find - procura arquivos no Linux
+    Ex.: find DIRETÓRIO -name NOME-DO-ARQUIVOS
+         find /home -name nomequalquer.jpg
+df - mostra o espaço em disco utilizado
+    df -h - mostra o conteúdo em modo detalhado c/ tamanho listado
+du - mostra o tamanho do diretório
+    du -h - mostra o conteúdo c/ tamanho listado
+cat - visualiza um arquivo
+cat /etc/passwd - visualiza usuário criado
+useradd - cria um usuario
+passwd - altera a senha de um usuario
+userdel - remove um usuário
+su - acessar um usuario
+sudo - executa um comando com elevação de privilégios
