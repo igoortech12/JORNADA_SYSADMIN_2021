@@ -1,0 +1,7 @@
+AQUECIMENTO JORNADA SYSADMIN
+
+Introdução ao Linux
+https://youtu.be/vUVaom_tIKA
+
+Instalando pacotes e analisando logs
+https://youtu.be/uZ2_Prh-eDw
