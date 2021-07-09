@@ -1,7 +1,10 @@
 AQUECIMENTO JORNADA SYSADMIN
 
-Introdução ao Linux
+1 - Introdução ao Linux
 https://youtu.be/vUVaom_tIKA
 
-Instalando pacotes e analisando logs
+2 - Instalando pacotes e analisando logs
 https://youtu.be/uZ2_Prh-eDw
+
+3 - Criando Script no Linux
+https://youtu.be/q4x3ZVFj9dI 
