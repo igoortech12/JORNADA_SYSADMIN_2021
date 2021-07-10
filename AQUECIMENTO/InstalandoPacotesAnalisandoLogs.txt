@@ -1,0 +1,28 @@
+INSTALAÇÃO DE PACOTES
+yum - REDHAT
+apt - DEBIAN
+
+CentOS instalado
+yum install vim
+yum install net-tools
+
+ip a - visualiza detalhes da rede (IP, GW...)
+
+yum install squid
+yum install nginx
+
+INICIANDO SERVIÇO
+service NOME-DO-SERVIÇO start
+
+service squid start
+service nginx start
+
+yum search NOME-DO-PACOTE - Procura um pacote no linux
+
+ANÁLISE DE LOGs
+/var/log/squid/access.log
+tail - Visualiza o conteúdo de um arquivo mostrado, mostrando as ultimas linhas
+    -f - tempo real
+grep - Filtro
+
+trail -f /var/log/squid/access.log | grep NOME-DO-FiLTRO
