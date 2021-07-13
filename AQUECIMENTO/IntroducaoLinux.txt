@@ -26,7 +26,7 @@ ls - lista conteúdo de um diretório
     ls -l - mostra o conteúdo em modo detalhado s/ tamanho listado
     ls -h - mostra o conteúdo em modo detalhado c/ tamanho listado
     ls -a - mostrar tudo com arquivos ocultos
-clear - limpa a tela
+clear ou Ctrl L- limpa a tela
 mkdir - criação um diretório (pasta)
 rm - apagar arquivos
     rm -r - apagar diretório
