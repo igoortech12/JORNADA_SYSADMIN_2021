@@ -1,0 +1,43 @@
+ANSIBLE
+
+- É uma ferramenta de automação de TI.
+- Ele vai orquestrar suas tarefas.
+- Gerencia os servidores sem agentes.
+- O Ansible é descentralizado.
+- Ele depende de credencias para acessar as máquinas remotamente.
+- Suporta vários métodos de autenticação (kerberos, Ldap, SSH,...).
+- Ansible é um software Opensource.
+
+https://www.ansible.com/
+
+DOCKER
+
+- O Docker gerencia seus containers.
+- Melhor utilização dos recursos do servidores.
+- Facilidade para subir serviços.
+- Criar suas próprias imagens.
+- Você pode usar sua imagem em locais diferentes.
+- Docker pe um software Opensource.
+
+
+MÁQUINA VIRTUAL LOCAL OU NUVEM: UBUNTU
+sudo su
+
+-Instalando o ANSIBLE
+apt-get update
+
+apt-get install ansible
+
+ansible --version
+
+ansible localhost -m ping
+
+ansible localhost -m apt -a "name=vim state=latest"
+
+ansible localhost -m apt -a "name=net-tools state=latest"
+
+-Instalando o DOCKER
+OLHAR DOCUMENTAÇÃO OFICIAL PARA UBUNTU!!!
+
+-Instalando NGINX no DOCKER na porta 80
+docker container run -p 80:80 nginx
