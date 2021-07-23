@@ -1,0 +1,77 @@
+CRIAÇÃO DE MÁQUINA NA AWS
+
+MÁQUINA 1 - REDHAT (WEB)
+
+EC2
+INSTÂNCIAS
+EXECUTAR INSTÂNCIA
+REDHAT
+T2.MICRO
+
+MÁQUINA 2 - REDHAT 2X (ELASTICSEARCH E ZABBIX)
+
+EC2
+INSTÂNCIAS
+EXECUTAR INSTÂNCIA
+REDHAT
+T3.MEDIUM
+
+MÁQUINA 3 - QUALQUE LINUX QUE TENHA INSTALADO O ANSIBLE (LOCAL OU CLOUD)
+Acessar CLI
+
+ACESSAR AWS SSH VIA CHAVE
+apt-get install ansible
+
+CONFIGURAR CONEXÃO ENTRE SERVIDOR ANSIBLE E AS MÁQUINAS WEB, ELASTICSEARCH E ZABBIX
+ACESSAR MÁQUINA WEB
+scp -i NOME-DA-CHAVE-BAIXADA NOME-DA-CHAVE-BAIXADA NOME-DA-MAQUINA@IP-PUBLICO(OU LOCAL):POSTA-DE-DESTINO NOME-DA-CHAVE-BAIXADA
+EX.: spc -i jornada_sysadmin.pem jornada_sysadmin.pem ubuntu@52.3.240.125:/tmp jornada_sysadmin.pem
+
+ssh -i jornada_sysadmin.pem ubuntu@52.3.240.125
+
+---------------------------------------------------------------------------------------------------------------------------------
+----HOST COM ANSIBLE----
+ANSIBLE ROLES - ESTRUTURA
+
+# playbooks
+site.yml
+webservers.yml
+fooservers.yml
+roles/
+    common/
+        tasks/
+        handlers/
+        library/
+        files/
+        templates/
+        vars/
+        defaults/
+        meta/
+    wenservers/
+        tasks/
+        defaults/
+        meta/
+
+root
+    mkdir jornada_sysadmin
+    cd jornada_sysadmin
+    touch hosts
+    vim hosts
+
+vbox_web    ansible_host=192.168.1.56   ansible_user=ansible
+
+vbox_zabbix    ansible_host=192.168.1.54   ansible_user=ansible
+
+vbox_elastic    ansible_host=192.168.1.57   ansible_user=ansible
+
+comando para sair do vim: TECLA ESC + TECLA : + TECLAS w q   :wq
+
+TESTAR ARQUIVO VIM HOSTS
+ansible -i hosts all -m ping
+
+vim /etc/ansible/ansible.cfg
+
+
+https://ironlinux.com.br/primeiros-passos-com-ansible/
+
+
