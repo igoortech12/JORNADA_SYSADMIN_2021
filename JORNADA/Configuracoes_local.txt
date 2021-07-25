@@ -1,0 +1,43 @@
+TESTE DE COMUNICAÇÃO SERVIDOR ANSIBLE E HOSTS (ZABBIX, WEB E ELASTICSEARCH) VIA PRIVATE KEYS
+
+SO UTILIZADO NO LABORATÓRIO: UBUNTU SERVER
+
+https://www.jlcp.com.br/primeiros-passos-com-ansible/
+
+--PRIMEIRAS CONFIGURAÇÕES--
+DEFININDO SENHA ROOT
+sudo -i
+passwd
+
+
+INSTALAR OPENSSH NAS MÁQUINAS
+sudo apt-get install openssh-server --yes
+
+INSTALAR PYTHON NAS MÁQUINAS
+sudo apt-get install python --yes
+
+CRIAR CHAVES
+ssh-keygen
+
+COPIAR CHAVE id_rsa.pub DO SERVIDOR PARA /root/.ssh DE TODOS HOSTs MONITORADOS
+ssh-copy-id -i /root/.ssh/id_rsa.pub root@IP
+
+CONFERIR SE A CHAVE FOI COPIADA
+ssh -i /root/.ssh/id_rsa.pub root@IP
+
+CONFIGURAR ARQUIVO hosts COM OS IPs DOS HOSTS MONITORADOS
+cd /etc/ansible
+ls -a
+cp hosts hosts.BAK
+
+EDITANDO hosts
+vim hosts
+[monitorados]
+host1 ansible_ssh_host=0.0.0.0
+host2 ansible_ssh_host=0.0.0.0
+host3 ansible_ssh_host=0.0.0.0
+host4 ansible_ssh_host=0.0.0.0
+Depois salve.
+
+TESTANDO CHAMADA DO arquivo hosts
+ansible monitorados -m ping

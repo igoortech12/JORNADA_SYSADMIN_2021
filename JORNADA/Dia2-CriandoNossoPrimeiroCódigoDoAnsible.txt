@@ -58,7 +58,7 @@ root
     touch hosts
     vim hosts
 
-vbox_web    ansible_host=192.168.1.56   ansible_user=ansible
+vbox_web    ansible_host=192.168.1.56   ansible_ssh_private_key_file
 
 vbox_zabbix    ansible_host=192.168.1.54   ansible_user=ansible
 
@@ -74,4 +74,43 @@ vim /etc/ansible/ansible.cfg
 
 https://ironlinux.com.br/primeiros-passos-com-ansible/
 
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-16-04
 
+
+
+
+---
+
+- name: Install epel-release
+  apt:
+     name:
+     - https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+
+- name: Add Docker repo
+  get_url:
+          url: https://download.docker.com/linux/centos/docker-ce.repo
+     dest: /etc/apt.repos.d/docker-ce.repo
+
+- name: Install Python-pip
+  apt:
+     name:
+      - python3-pip
+
+- name: Install Docker
+  apt:
+     name:
+      - docker
+  state: installed
+
+ - name: Download and install Docker Compose
+   get_url:
+           url: https://github.com/docker/compose/releases/download/1.29.0/docker-compose-linux-x86_64
+           dest: /usr/bin/docker-compose
+           mode: 0755
+ - name: Install docker-py
+   pip:
+      name:
+       - docker-py
+
+ - name: Start_docker
+   service: name=docker enable=yes state=restarted
