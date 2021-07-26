@@ -77,6 +77,86 @@ https://ironlinux.com.br/primeiros-passos-com-ansible/
 https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-ubuntu-16-04
 
 
+ESTRUTURA PASTAS
+/etc/ansible
+../roles/
+├── role-install-docker
+│   ├── meta
+│   │   └── main.yml
+│   └── tasks
+│       └── main.yml
+└── role-update
+    └── tasks
+        └── main.yml
+    └── handlers
+        └── main.yml
+
+ESTRUTURA main.yml (PASTA ROLE-INSTALL-DOCKER/META)
+dependencies:
+        - role: role-update
+
+ESTRUTURA main.yml (PASTA ROLE-INSTALL-DOCKER/TASKS)
+---
+
+- name: Install epel-release
+  yum:
+     name:
+     - https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+
+- name: Add Docker repo
+  get_url:
+          url: https://download.docker.com/linux/centos/docker-ce.repo
+          dest: /etc/apt.repos.d/docker-ce.repo
+
+- name: Install Python-pip
+  yum:
+     name:
+      - python3-pip
+
+- name: Install Docker
+  yum:
+     name:
+      - docker-ce
+     state: installed
+
+- name: Download and install Docker Compose
+  get_url:
+          url: https://github.com/docker/compose/releases/download/1.29.0/docker-compose-linux-x86_64
+          dest: /usr/bin/docker-compose
+          mode: 0755
+
+- name: Install docker-py
+  pip:
+     name:
+      - docker-py
+
+- name: Start_docker
+  service: name=docker enabled=yes state=restarted
+
+ESTRUTURA main.yml (PASTA ROLE-UPDATE/TASKS)
+---
+- name: update so
+  yum: name=* state=latest update_cache=yes
+  notify: reboot
+
+ESTRUTURA main.yml (PASTA ROLE-UPDATE/HANDLERS)
+---
+- name: reboot
+  reboot:
+          reboot_timeout: 120
+...
+
+ESTRUTURA zabbix.yml (PASTA ANSIBLE)
+- host: zabbix
+  become: true
+  become_user: root
+
+  roles:
+          - role-install-docker
+
+COMANDO PARA CHAMAR zabbix.yml
+ansible-playbook -i PASTA_DOS_ONDE_TÁ_CONFIGURADO_OS_HOSTS_MONITORADOS zabbix.yml
+ansible-playbook -i hosts zabbix.yml
 
 
 ---
@@ -114,3 +194,4 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-an
 
  - name: Start_docker
    service: name=docker enable=yes state=restarted
+   ...
