@@ -8,3 +8,7 @@ https://youtu.be/uZ2_Prh-eDw
 
 3 - Criando Script no Linux
 https://youtu.be/q4x3ZVFj9dI 
+
+[Jornada SysAdmin Aula 01] - Conhecendo o Ansible e Docker
+[Jornada SysAdmin Aula 02] - Criando nosso primeiro código do Ansible
+[Jornada SysAdmin Aula 03] - Criando monitoramentos inteligentes
